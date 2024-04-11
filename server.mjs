@@ -6,7 +6,7 @@ app.use(express.json())
 
 app.get('/',(req,res)=>{
     const visitorIP = 
-        req.headers['cf-connecting-ip'] ||  
+        req.headers['cf-connecting-ip'] ||  // High priority in case Cloudflare is used
         req.headers['x-real-ip'] ||
         req.headers['x-forwarded-for'] ||
         req.socket.remoteAddress || '';
